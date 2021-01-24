@@ -1,13 +1,25 @@
+# ---------------------------------------------------------------------------- #
+#                               MAIN MENU SCREEN                               #
+# ---------------------------------------------------------------------------- #
+# When the user first runs the applications
+# From here the user can set how many players, their names, change options
+# and play of course!
+
+
+# The insertion is needed to get the other dependecies to work
 import pygame
 import sys
 sys.path.insert(1, "C:\\Users\\adria\\Desktop\\py-monopoly\\lib")
 sys.path.insert(1, "C:\\Users\\adria\\Desktop\\py-monopoly\\lib\\Fonts")
 sys.path.insert(1, "C:\\Users\\adria\\Desktop\\py-monopoly\\lib\\Classes")
 
-
+import settings as Settings
 import colors as Colors
 import button
- 
+
+import options
+# ---------------------------------------------------------------------------- #
+
 pygame.init()
 # The clock will be used to control how fast the screen updates
 clock = pygame.time.Clock()
@@ -19,8 +31,6 @@ def mainMenu(Settings):
         Settings (module): Configurations for the user
     """
     
-    height = Settings.HEIGHT
-    width = Settings.WIDTH
     
     while True:
         # ---------------------------------------------------------------------------- #
@@ -31,42 +41,42 @@ def mainMenu(Settings):
         Settings.screen.fill(Colors.boardColor)
 
         # Creates the background behind the Monopoly Text
-        rectangle = pygame.Rect(width / 8, height / 12, ( width - (width * .25)), height / 4)
+        rectangle = pygame.Rect(Settings.WIDTH / 8, Settings.HEIGHT / 12, ( Settings.WIDTH - (Settings.WIDTH * .25)), Settings.HEIGHT / 4)
         pygame.draw.rect(Settings.screen, Colors.red, rectangle)
         
-        rectangle2 = pygame.Rect(width / 7, height / 19, ( width - (width * .285)), height / 3.25)
+        rectangle2 = pygame.Rect(Settings.WIDTH / 7, Settings.HEIGHT / 19, ( Settings.WIDTH - (Settings.WIDTH * .285)), Settings.HEIGHT / 3.25)
         pygame.draw.rect(Settings.screen, Colors.red, rectangle2)
 
         # Draws top left circle
-        pygame.draw.circle(Settings.screen, Colors.red, (width / 6.925, height/12), 31 )
+        pygame.draw.circle(Settings.screen, Colors.red, (Settings.WIDTH / 6.925, Settings.HEIGHT/12), 31 )
         
         #Draws top right circle
-        pygame.draw.circle(Settings.screen, Colors.red, ( ((width / 7) + width - (width * .286)), height / 12), 30 )
+        pygame.draw.circle(Settings.screen, Colors.red, ( ((Settings.WIDTH / 7) + Settings.WIDTH - (Settings.WIDTH * .286)), Settings.HEIGHT / 12), 30 )
 
         # Draws bottom left circle
-        pygame.draw.circle(Settings.screen, Colors.red, (width / 6.925, height/3.055), 31 )
+        pygame.draw.circle(Settings.screen, Colors.red, (Settings.WIDTH / 6.925, Settings.HEIGHT/3.055), 31 )
         
         # Draws bottom right circle
-        pygame.draw.circle(Settings.screen, Colors.red, (((width / 7) + width - (width * .286)), height/3.055), 31)
+        pygame.draw.circle(Settings.screen, Colors.red, (((Settings.WIDTH / 7) + Settings.WIDTH - (Settings.WIDTH * .286)), Settings.HEIGHT/3.055), 31)
         
-        aspectRatio = width / height
+        aspectRatio = Settings.WIDTH / Settings.HEIGHT
 
         # Displays the 'Monopoly' Text
         font = pygame.font.Font(None, int(72 * aspectRatio))
         txt = font.render("Monopoly", True, Colors.white)
-        Settings.screen.blit(txt, (width / 2.5, height / 6))
+        Settings.screen.blit(txt, (Settings.WIDTH / 2.5, Settings.HEIGHT / 6))
 
         # Displays the 'The Yonkers Edition' Text
         font = pygame.font.Font(None, int(27 * aspectRatio))
         txt = font.render("The Yonkers Edition", True, Colors.white)
-        Settings.screen.blit(txt, (width / 2.35, height / 3.75))
+        Settings.screen.blit(txt, (Settings.WIDTH / 2.35, Settings.HEIGHT / 3.75))
         
         # Displays an Option Button
-        optionButton = button.Button(Settings.screen, width / 2.35, height / 2, width / 6, height / 12, "Option")
+        optionButton = button.Button(Settings.screen, Settings.WIDTH / 2.35, Settings.HEIGHT / 2, Settings.WIDTH / 6, Settings.HEIGHT / 12, "Option")
         optionButton.draw()
 
         # Displays the Quit Button
-        quitButton = button.Button(Settings.screen, width / 2.35, height / 1.65, width / 6, height / 12, "Quit")
+        quitButton = button.Button(Settings.screen, Settings.WIDTH / 2.35, Settings.HEIGHT / 1.65, Settings.WIDTH / 6, Settings.HEIGHT / 12, "Quit")
         quitButton.draw()
 
         # ---------------------------------------------------------------------------- #
@@ -85,7 +95,7 @@ def mainMenu(Settings):
                     # Checks if users presses their mouse button
                     if event.button == 1:
                         # Navigatate to Options 
-                        option(Settings)
+                        options.option(Settings)
                 # Check if user is hovering over the quit button
                 if quitButton.isHover(mousePosition):
                     # Checks if users presses their mouse button
@@ -94,16 +104,12 @@ def mainMenu(Settings):
                         pygame.quit()
                         sys.exit()
 
-        # --- Go ahead and update the screen with what we've drawn.
+        # --- Update the screen with what was drawn
         pygame.display.flip()
      
         # --- Limit to 60 frames per second
         clock.tick(60)
 
-def option(Settings):
-    """
-    docstring
-    """
-   pass
 
-
+if __name__ == "__main__":
+    mainMenu(Settings)
