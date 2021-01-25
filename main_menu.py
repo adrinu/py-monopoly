@@ -72,11 +72,15 @@ def mainMenu(Settings):
         Settings.screen.blit(txt, (Settings.WIDTH / 2.35, Settings.HEIGHT / 3.75))
         
         # Displays an Option Button
-        optionButton = button.Button(Settings.screen, Settings.WIDTH / 2.35, Settings.HEIGHT / 2, Settings.WIDTH / 6, Settings.HEIGHT / 12, "Option")
+        startButton = button.Button(Settings.screen, Settings.WIDTH / 2.35, Settings.HEIGHT / 2.25, Settings.WIDTH / 6, Settings.HEIGHT / 12, "Play")
+        playButton.draw()
+
+        # Displays an Option Button
+        optionButton = button.Button(Settings.screen, Settings.WIDTH / 2.35, Settings.HEIGHT / 1.75, Settings.WIDTH / 6, Settings.HEIGHT / 12, "Option")
         optionButton.draw()
 
         # Displays the Quit Button
-        quitButton = button.Button(Settings.screen, Settings.WIDTH / 2.35, Settings.HEIGHT / 1.65, Settings.WIDTH / 6, Settings.HEIGHT / 12, "Quit")
+        quitButton = button.Button(Settings.screen, Settings.WIDTH / 2.35, Settings.HEIGHT / 1.45, Settings.WIDTH / 6, Settings.HEIGHT / 12, "Quit")
         quitButton.draw()
 
         # ---------------------------------------------------------------------------- #
@@ -89,13 +93,21 @@ def mainMenu(Settings):
                 pygame.quit() 
 
             # 1025 represents is user presses their Left Mouse Button
-            if event.type == 1025: 
+            if event.type == 1025:
+                # Check if user is hovering over the play button
+                if startButton.isHover(mousePosition):
+                    # Checks if users presses their mouse button
+                    if event.button == 1:
+                        # Quits the game and program
+                        print("Start button pressed")
+
                 # Check if user is hovering over the option button
                 if optionButton.isHover(mousePosition):
                     # Checks if users presses their mouse button
                     if event.button == 1:
                         # Navigatate to Options 
                         options.option(Settings)
+
                 # Check if user is hovering over the quit button
                 if quitButton.isHover(mousePosition):
                     # Checks if users presses their mouse button
