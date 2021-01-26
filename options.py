@@ -6,15 +6,11 @@
 
 # The insertion is needed to get the other dependecies to work
 import pygame
-import sys
-sys.path.insert(1, "C:\\Users\\adria\\Desktop\\py-monopoly\\lib")
-sys.path.insert(1, "C:\\Users\\adria\\Desktop\\py-monopoly\\lib\\Fonts")
-sys.path.insert(1, "C:\\Users\\adria\\Desktop\\py-monopoly\\lib\\Classes")
 
-import colors as Colors
-import button
-import settings as Settings
-import checkbox
+import lib.colors as Colors
+import lib.settings as Settings
+import lib.Classes.button as button
+import lib.Classes.checkbox as checkbox
 # ---------------------------------------------------------------------------- #
 
 pygame.init()

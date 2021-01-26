@@ -5,19 +5,13 @@
 # From here the user can set how many players, their names, change options
 # and play of course!
 
-
-# The insertion is needed to get the other dependecies to work
 import pygame
-import sys
-sys.path.insert(1, "C:\\Users\\adria\\Desktop\\py-monopoly\\lib")
-sys.path.insert(1, "C:\\Users\\adria\\Desktop\\py-monopoly\\lib\\Fonts")
-sys.path.insert(1, "C:\\Users\\adria\\Desktop\\py-monopoly\\lib\\Classes")
-
-import settings as Settings
-import colors as Colors
-import button
-
 import options
+
+import lib.colors as Colors
+import lib.settings as Settings
+import lib.Classes.button as button
+
 # ---------------------------------------------------------------------------- #
 
 pygame.init()
@@ -114,7 +108,6 @@ def mainMenu(Settings):
                     if event.button == 1:
                         # Quits the game and program
                         pygame.quit()
-                        sys.exit()
 
         # --- Update the screen with what was drawn
         pygame.display.flip()

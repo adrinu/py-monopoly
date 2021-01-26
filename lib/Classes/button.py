@@ -2,7 +2,7 @@
 #                                 BUTTON CLASS                                 #
 # ---------------------------------------------------------------------------- #
 import pygame
-import colors as Colors
+import lib.colors as Colors
 # ---------------------------------------------------------------------------- #
 
 class Button:
