@@ -73,7 +73,7 @@ def mainMenu(Settings):
         
         # Displays an Option Button
         startButton = button.Button(Settings.screen, Settings.WIDTH / 2.35, Settings.HEIGHT / 2.25, Settings.WIDTH / 6, Settings.HEIGHT / 12, "Play")
-        playButton.draw()
+        startButton.draw()
 
         # Displays an Option Button
         optionButton = button.Button(Settings.screen, Settings.WIDTH / 2.35, Settings.HEIGHT / 1.75, Settings.WIDTH / 6, Settings.HEIGHT / 12, "Option")
