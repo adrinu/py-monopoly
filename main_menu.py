@@ -7,6 +7,7 @@
 
 import pygame
 import options
+import start_game
 
 import lib.colors as Colors
 import lib.settings as Settings
@@ -93,7 +94,7 @@ def mainMenu(Settings):
                     # Checks if users presses their mouse button
                     if event.button == 1:
                         # Quits the game and program
-                        print("Start button pressed")
+                        start_game.startGame(Settings)
 
                 # Check if user is hovering over the option button
                 if optionButton.isHover(mousePosition):
@@ -114,7 +115,6 @@ def mainMenu(Settings):
      
         # --- Limit to 60 frames per second
         clock.tick(60)
-
 
 if __name__ == "__main__":
     mainMenu(Settings)

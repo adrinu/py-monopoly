@@ -39,7 +39,7 @@ def option(Settings):
         Settings.screen.fill(Colors.boardColor)
        
         # Displays the Quit Button
-        quitButton = button.Button(Settings.screen, 10, Settings.HEIGHT - (Settings.HEIGHT * .1), Settings.WIDTH / 6, Settings.HEIGHT / 12, "Go Back")
+        quitButton = button.Button(Settings.screen, 10, Settings.HEIGHT - (Settings.HEIGHT * .1), Settings.WIDTH / 6, Settings.HEIGHT / 12, "Back")
         quitButton.draw()
 
         # Displays Resolution Buttons
