@@ -18,15 +18,18 @@ class Button:
             text (str, optional): Text to display on the button. Defaults to "".
             textColor (Color): Color for the text
     """
-    def __init__(self, screen, x, y , width, height, text = "" , color = Colors.black, textColor = Colors.black):
+    def __init__(self, screen, x, y , width, height, text = "" , textSize = 24, color = Colors.black, textColor = Colors.white):
         self.screen = screen
         self.x = x
         self.y = y 
         self.width = width
         self.height = height
+        
         self.text = text
-        self.color = color
+        self.textSize = textSize
         self.textColor = textColor
+        
+        self.color = color
         
     def draw(self):
         """Displays the button on the screen
@@ -38,8 +41,8 @@ class Button:
         # If the button has text, then draw it 
         if self.text:
             # Create Text
-            font = pygame.font.SysFont(None, int(24 * (self.width / self.height)))
-            img = font.render(self.text, True, Colors.white)
+            font = pygame.font.SysFont(None, self.textSize)
+            img = font.render(self.text, True, self.textColor)
             
             # Grabs height and width of Text
             textDimensions = img.get_rect()

@@ -128,7 +128,7 @@ def generateResolutionButtons(Settings):
     for i in range(len(Settings.screenSizes)):
         resolutionString = str(Settings.screenSizes[i][0]) + " x " + str(Settings.screenSizes[i][1])
 
-        temp = button.Button(Settings.screen, 0, 0, Settings.WIDTH - (Settings.WIDTH * .9), Settings.HEIGHT - (Settings.HEIGHT * .9), resolutionString, Colors.black)
+        temp = button.Button(Settings.screen, 0, 0, Settings.WIDTH - (Settings.WIDTH * .9), Settings.HEIGHT - (Settings.HEIGHT * .9), resolutionString)
         temp.x = positionX
         temp.y = positionY
         resolutionButtons.append(temp)
