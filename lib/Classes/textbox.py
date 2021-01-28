@@ -22,7 +22,7 @@ class TextBox:
             selected (bool): If the user has clicked on the textbox or not
             selectedColor (Colors, optional): Border color if the textbox is selected. Defaults to Colors.black
         """
-    def __init__(self, screen, x, y, width, height, charLimit, borderColor = Colors.black, backgroundColor = Colors.boardColor, textColor = Colors.white, selected = False, selectedColor = Colors.white):
+    def __init__(self, screen, x, y, width, height, charLimit, borderColor = Colors.black, backgroundColor = Colors.boardColor, textColor = Colors.white, textSize = 24, selected = False, selectedColor = Colors.white):
         
         self.screen = screen
         self.x = x
@@ -35,6 +35,7 @@ class TextBox:
         self.backgroundColor = backgroundColor
         
         self.text = ""
+        self.textSize = textSize
         self.textColor = textColor
         self.charLimit = charLimit
 
@@ -60,7 +61,7 @@ class TextBox:
         pygame.draw.rect(self.screen, self.backgroundColor, inner )
 
         # Create Text
-        font = pygame.font.SysFont(None, int(24 * (self.width / self.height)))
+        font = pygame.font.SysFont(None, self.textSize)
         img = font.render(self.text, True, self.textColor)
         
         # Draws the text in the textbox
